@@ -1,5 +1,8 @@
+"use client"
 // Podemos recibir rutas desde nuestros url usando [] en las carpetas de enrutamiento
-import React from 'react'
+import { Suspense } from 'react'
+import PostsPage from '../page'
+import Loader from '@/components/Loader'
 
 // types
 type props = {
@@ -27,9 +30,22 @@ export default async function page({params} : props) {
     const post = await getPost(params.postId);
 
     return (
-        <div>
-            <h2>{post.id} - {post.title}</h2>
-            <p>{post.body}</p>
-        </div>
+        <section>
+            <div>
+                <h2>{post.id} - {post.title}</h2>
+                <p>{post.body}</p>
+            </div>
+            <hr />
+            <div>
+                <h2>Other posts</h2>
+                {/* Suspense permite mostrar un elemento hasta que el contenido 
+                de un componente este completamente cargado */}
+                <Suspense fallback={
+                    <Loader loaderText='Loading posts.'></Loader>
+                }>
+                    <PostsPage></PostsPage>
+                </Suspense>
+            </div>
+        </section>
     )
 }

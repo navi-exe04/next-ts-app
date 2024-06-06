@@ -1,7 +1,8 @@
+import Loader from "@/components/Loader"
 
 // Se pueden crear vistas de loading en nuestra aplicación
 export default function loading() {
     return (
-        <h2>Loading...</h2>
+        <Loader loaderText="Loading..."></Loader>
     )
 }
