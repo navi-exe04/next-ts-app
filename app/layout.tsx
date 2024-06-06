@@ -1,4 +1,6 @@
 import Navbar from "@/components/Index/Navbar"
+// Podemos importar fonts desde google
+import {Roboto} from 'next/font/google'
 
 // Podemos exportar nuestra metadata de forma dinamica en una constante
 // Esto para no definir la etiqueta heade en nuestro html
@@ -10,6 +12,13 @@ export const metadata = {
   keywords: ["Typescript", "Web application", "Programming"]
 }
 
+// Definimos y configuramos la fuente como una constante
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  styles: ["italic", "normal"],
+  subsets: ["latin"]
+})
+
 // Las rutas de un proyecto en Next se basan en los niveles de carpetas que
 // existan en el proyecto (next ignorara todos los archivos que se encuentren en la carpeta de app
 // a menos que tengan el nombre de page.tsx o layout.tsx)
@@ -20,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={roboto.className}>
         <Navbar></Navbar>
         <main>
           {children}
