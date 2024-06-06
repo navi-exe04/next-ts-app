@@ -2,6 +2,8 @@
 import Navbar from "@/components/Index/Navbar"
 // Podemos importar fonts desde google
 import {Roboto} from 'next/font/google'
+// Importar estilos
+import "@/public/styles/global.css"
 
 // Podemos exportar nuestra metadata de forma dinamica en una constante
 // Esto para no definir la etiqueta heade en nuestro html
