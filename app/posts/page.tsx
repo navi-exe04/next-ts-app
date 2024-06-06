@@ -12,6 +12,7 @@ type Post = {
 async function GetPosts() : Promise<Post[]> {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     const posts : Post[] = await response.json();
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     return posts;
 }
 
