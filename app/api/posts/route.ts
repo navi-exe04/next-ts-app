@@ -3,13 +3,6 @@
 // Para usarlos necesitamos usar la biblioteca NextRespose para retornar las respuestas
 import { NextResponse } from "next/server";
 
-// Podemos recibir params al igual que los componentes de react
-type props = {
-    params: {
-        userId
-    }
-}
-
 type Post = {
     userId: number, 
     id: number,
@@ -18,15 +11,21 @@ type Post = {
 }
 
 export async function GET() {
-    // Get the post from backend
+    // Get the posts from backend
     const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     const posts : Post[] = await response.json();
     return NextResponse.json(posts)
 }
 
-export async function POST() {
+export async function POST(request:Request) {
+
+    // Podemos acceder a la información que nos manda el cliente desde un body
+    const postInfo : Post = await request.json();
+    console.log(postInfo);
+
     return NextResponse.json({
-        'message': 'Agregando datos'
+        'message': 'Agregando datos',
+        'body': postInfo
     })
 }
 

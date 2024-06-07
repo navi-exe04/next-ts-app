@@ -16,7 +16,14 @@ type Post = {
 }
 
 export async function GET(request: Request, {params} : props) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`);
+
+    // Con serachParams podemos acceder a los parametros que vienen concatenados a nuestras rutas
+    const {searchParams} = new URL(request.url);
+    console.log(searchParams);
+    console.log(searchParams.get("nombre"));
+
+
+    const response : Response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`);
     const post : Post = await response.json();
     return NextResponse.json(post)
 }
