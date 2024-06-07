@@ -1,6 +1,7 @@
 // REACT CLIENT COMPONENT RCC
 "use client"
 import Link from "next/link"
+// import { useParams } from "next/navigation"
 
 // Types
 type Post = {
